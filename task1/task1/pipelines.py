@@ -27,7 +27,7 @@ class Task1Pipeline:
         duplicateremove.clear()
 
         if 'brands' in item:                                    #brand formatting and duplicate removal
-            for x in item['brands']:   
+            for x in item['brands']: 
                 duplicateremove[x]=1
             brandstr=','.join(list(duplicateremove.keys()))
             print(brandstr)

@@ -1,8 +1,11 @@
-import openai
 import csv
 import jsonlines
-with jsonlines.open('/media/nizam/OS/nymble-tasks/aifinetune/output.jsonl', mode='w') as writer:
-    with open('/media/nizam/OS/nymble-tasks/aifinetune/smallset.csv', newline='') as csvfile:
+import pathlib
+import os
+inputfilename=f'smallset.csv'
+print("current input file:" + inputfilename)
+with jsonlines.open(os.path.join(pathlib.Path(__file__).parent.resolve(),f'FineTuneFile.jsonl'), mode='w') as writer:
+    with open(os.path.join(pathlib.Path(__file__).parent.resolve(),inputfilename), newline='') as csvfile:
                 temp=[]
                 temp2=[]
                 tempdict={}
@@ -15,10 +18,10 @@ with jsonlines.open('/media/nizam/OS/nymble-tasks/aifinetune/output.jsonl', mode
                         
                         del data[0]
                         tempdict["completion"]=" "+','.join(data).strip("\"").replace(" ,",",")
-                        print (tempdict["completion"])
                         writer.write(tempdict)
                         temp2.append(tempdict)
-                        # print(temp2)
                         tempdict.clear()
+                
+                print("output saved to FineTuneFile.jsonl in current directory")
             
                 
