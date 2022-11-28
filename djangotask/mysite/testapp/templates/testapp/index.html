@@ -11,6 +11,14 @@
     <p>no items available</p>
 {% endif %}
 
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <b{% if message.tags %} class="{{ message.tags }}"{% endif %} >{{ message }}</b>
+    {% endfor %}
+</ul>
+{% endif %}
+
 <form action = "{% url 'testapp:submit' %}" method = "post">
     {% csrf_token %}
     <label for="text">add text to list</label>
