@@ -1,3 +1,4 @@
+from os import path
 # Scrapy settings for task1 project
 #
 # For simplicity, this file contains only settings considered important or
@@ -12,7 +13,7 @@ BOT_NAME = 'task1'
 
 SPIDER_MODULES = ['task1.spiders']
 NEWSPIDER_MODULE = 'task1.spiders'
-
+basepath = path.dirname(__file__)
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'task1 (+http://www.yourdomain.com)'
@@ -21,10 +22,11 @@ NEWSPIDER_MODULE = 'task1.spiders'
 ROBOTSTXT_OBEY = True
 
 FEEDS = {
-    '/media/nizam/OS/work/task1/data/%(name)s_%(time)s.csv': {
+    path.abspath(path.join(basepath,"..",f'data',f'%(name)s_%(time)s.csv')):{
         'format': 'csv',
         }
 }
+# '/media/nizam/OS/work/task1/data/%(name)s_%(time)s.csv': 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
 
