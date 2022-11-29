@@ -1,6 +1,0 @@
-<form action = "{% url 'testapp:edit' obj.id %}" method = "post">
-    {% csrf_token %}
-    <label for="text">edit text</label>
-    <input id="text" type="text" name="text" value="{{obj.list_text}}">
-    <input type="submit" value="save">
-    </form>
